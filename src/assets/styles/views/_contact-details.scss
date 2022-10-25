@@ -1,0 +1,14 @@
+.contact-details {
+    img {
+        max-width: 10%;
+        border: 1px solid $clr2;
+        border-radius: 50%;
+    }
+    gap: 20px;
+    .btn-back {
+        align-self: flex-start;
+        border-radius: 5px;
+        background-color: $clr6;
+        color: $clr2;
+    }
+}

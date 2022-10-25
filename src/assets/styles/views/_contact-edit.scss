@@ -1,0 +1,30 @@
+.contact-edit-container {
+    gap: 20px;
+
+    .btn-back {
+        background-color: $clr6;
+        color: $clr2;
+    }
+
+    .contact-edit {
+        gap: 20px;
+
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            outline: 0;
+            min-width: 5%;
+            max-width: 30%;
+        }
+
+        .btn-save {
+            background-color: green;
+        }
+    }
+
+    button {
+        min-width: 5%;
+        max-width: 30%;
+        border-radius: 5px;
+    }
+}

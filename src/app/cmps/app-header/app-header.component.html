@@ -1,0 +1,14 @@
+<!-- It should be written with ngclass or class -->
+<header class="app-header full main-layout flex">
+    <nav>
+        <!-- It should be inside a router link: -->
+        <a href="/" class="clean-link"><h3>misterBitcoin.com</h3></a>
+        <!-- It should be inside a router link: -->
+        <a href="http:/contacts" class="clean-link">Contacts</a>
+        <!-- It should be inside a router link: -->
+        <a href="/stats" class="clean-link">Statistics</a>
+        <div class="loggedin-user">
+            <h4>Welcome {{loggedinUser.name}}, Your Balance is: BTC {{loggedinUser.balance}}</h4>
+        </div>
+    </nav>
+</header>

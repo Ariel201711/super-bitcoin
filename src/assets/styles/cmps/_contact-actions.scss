@@ -1,0 +1,18 @@
+.contact-actions {
+    gap: 20px;
+
+    button {
+        border-radius: 80px;
+        &.btn-remove {
+            background-color: red;
+            color: $clr2;
+        }
+        &.btn-edit {
+            background-color: $clr2;
+        }
+        &.btn-details {
+            background-color: $clr4;
+            color: $clr2;
+        }
+    }
+}

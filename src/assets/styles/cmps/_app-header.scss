@@ -1,0 +1,33 @@
+.app-header {
+    padding-block: 20px;
+    background-color: $clr1;
+    color: $clr2;
+    border-bottom: 1px solid $clr6;
+
+    .logo {
+        font-size: rem(20px);
+    }
+
+    nav {
+        a {
+            display: inline-flex;
+            
+            &:not(:first-of-type) {
+                padding-inline-start: rem(16px);
+            }
+
+            &:not(:last-of-type) {
+                padding-inline-end: rem(16px);
+            }
+
+            &.router-link-exact-active:hover {
+                background-color: transparent;
+            }
+        }
+
+    }
+
+    .loggedin-user {
+        padding-block: 40px;
+    }
+}
