@@ -2,13 +2,13 @@
 <header class="app-header full main-layout flex">
     <nav>
         <!-- It should be inside a router link: -->
-        <a href="/" class="clean-link"><h3>misterBitcoin.com</h3></a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="logo clean-link"><h3>misterBitcoin.com</h3></a>
         <!-- It should be inside a router link: -->
-        <a href="http:/contacts" class="clean-link">Contacts</a>
+        <a routerLink="/contact" routerLinkActive="active" class="clean-link">Contacts</a>
         <!-- It should be inside a router link: -->
-        <a href="/stats" class="clean-link">Statistics</a>
-        <div class="loggedin-user">
-            <h4>Welcome {{loggedinUser.name}}, Your Balance is: BTC {{loggedinUser.balance}}</h4>
-        </div>
+        <a routerLink="/stat" routerLinkActive="active" class="clean-link">Statistics</a>
     </nav>
+    <div class="loggedin-user">
+        <h4>Welcome {{loggedinUser.name}}, Your Balance is: BTC {{loggedinUser.balance}}</h4>
+    </div>
 </header>

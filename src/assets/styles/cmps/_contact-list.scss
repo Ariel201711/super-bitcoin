@@ -2,30 +2,23 @@
     .contact-list {
         gap: 20px;
 
-        .contact-card-container-move,
-        /* apply transition to moving elements */
-        .contact-card-container-enter-active,
-        .contact-card-container-leave-active {
-            transition: all 0.5s ease;
-        }
+//         .contact-card-container-move,
+//         /* apply transition to moving elements */
+//         .contact-card-container-enter-active,
+//         .contact-card-container-leave-active {
+//             transition: all 0.5s ease;
+//         }
 
-        .contact-card-container-enter-from,
-        .contact-card-container-leave-to {
-            opacity: 0;
-            transform: translateX(30px);
-        }
+//         .contact-card-container-enter-from,
+//         .contact-card-container-leave-to {
+//             opacity: 0;
+//             transform: translateX(30px);
+//         }
 
-        /* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
-        .contact-card-container-leave-active {
-            position: absolute;
-        }
-
-        .contact-card {
-            padding: 10px;
-            background-color: $clr6;
-            gap: 10px;
-            border-radius: 15px;
-        }
+//         /* ensure leaving items are taken out of layout flow so that moving
+//    animations can be calculated correctly. */
+//         .contact-card-container-leave-active {
+//             position: absolute;
+//         }
     }
 }

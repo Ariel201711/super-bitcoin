@@ -1,1 +1,5 @@
-<p>contact-list works!</p>
+<section class="contact-list-container">
+    <ul class="contact-list clean-list flex column">
+        <contact-preview (remove)="remove.emit($event)" *ngFor="let contact of contacts" [contact]="contact"></contact-preview>
+    </ul>
+</section>

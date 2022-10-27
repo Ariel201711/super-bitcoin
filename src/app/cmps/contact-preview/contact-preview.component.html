@@ -1,1 +1,18 @@
-<p>contact-preview works!</p>
+<section class="contact-preview">
+    <li class="contact-card flex">
+        <section class="contact-data flex column">
+            <h2>{{contact.name}}</h2>
+            <h3>Phone Number: {{contact.phone}}</h3>
+        </section>
+        <section class="contact-actions flex">
+            <a [routerLink]="['/contact', contact._id]">
+                <button class="btn-details">&nbsp;&nbsp;ℹ️&nbsp;&nbsp;</button>
+            </a>
+            <a [routerLink]="['/contact/edit', contact._id]">
+                <button class="btn-edit">✏️</button>
+            </a>
+            <button (click)="onRemoveContact()" class="btn-remove">🗑️</button>
+        </section>
+    </li>
+</section>
+

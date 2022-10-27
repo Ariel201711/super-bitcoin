@@ -20,8 +20,11 @@
                 padding-inline-end: rem(16px);
             }
 
-            &.router-link-exact-active:hover {
+            &[routerLinkActive]:hover {
                 background-color: transparent;
+            }
+            &[routerLinkActive].active:not(:first-of-type) {
+                color: $clr5;
             }
         }
 

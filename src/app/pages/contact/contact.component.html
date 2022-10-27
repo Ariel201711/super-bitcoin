@@ -1,1 +1,8 @@
-<p>contact works!</p>
+<section class="contact flex column">
+    <h1>Contact List</h1>
+    <section class="contact-top-operations flex">
+        <contact-filter></contact-filter>
+        <contact-add></contact-add>
+    </section>
+    <contact-list (remove)="onRemoveContact($event)" [contacts]="(contacts$|async)!"></contact-list>
+</section>

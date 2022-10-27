@@ -1,0 +1,14 @@
+<section class="contact-edit-container flex column">
+    <div>
+        <a routerLink="/contact" class="back-link">
+            <button class="btn-back">←</button>
+        </a>
+    </div>
+    <h1>{{pageTitle}}</h1>
+    <form class="contact-edit flex column" (ngSubmit)="onSaveContact()">
+        <input [(ngModel)]="contact.name" placeholder="Enter Name" type="text"  name="name" id="name"/>
+        <input [(ngModel)]="contact.phone" placeholder="+x (xxx) xxx-xxxx" type="tel" name="phone" id="phone"/>
+        <input [(ngModel)]="contact.email" placeholder="nickname@mail.com" type="email" name="email" id="email"/>
+        <button class="btn-save">💾</button>
+    </form>
+</section>

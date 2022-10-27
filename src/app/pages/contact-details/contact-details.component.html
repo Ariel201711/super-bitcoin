@@ -1,1 +1,10 @@
-<p>contact-details works!</p>
+<section class="contact-details flex column">
+    <a routerLink="/contact" class="back-link">
+        <button class="btn-back flex">←</button>
+    </a>
+    <img src="https://joeschmoe.io/api/v1/{{contact._id}}@ashallendesign.co.uk" alt="No Contact Image">
+    <h1>contact Details</h1>
+    <h2>{{contact.name}}</h2>
+    <h3>Phone Number: {{contact.phone}}</h3>
+    <h3>Email: {{contact.email}}</h3>
+</section>

@@ -1,27 +1,14 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class StorageService {
-
-  constructor() { }
+export const storageService = {
+    loadFromStorage,
+    saveToStorage
 }
 
-/*
-  TODO: Impolement this code in TS and use storage module:
+function saveToStorage(entityType: string, entities: any) {
+    localStorage.setItem(entityType, JSON.stringify(entities))
+}
 
-    export const storageService = {
-        load: loadFromStorage,
-        save: saveToStorage,
-    }
+function loadFromStorage(key: string) {
+    var val: any = localStorage.getItem(key)
+    return JSON.parse(val)
+}
 
-    function saveToStorage(key, value) {
-        localStorage.setItem(key, JSON.stringify(value) ||null)
-    }
-    function loadFromStorage(key) {
-        let data = localStorage.getItem(key)
-        return data ? JSON.parse(data) : undefined
-    }
-    
-*/

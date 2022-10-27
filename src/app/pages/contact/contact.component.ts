@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Contact } from 'src/app/models/contact.model';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'contact',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contactService: ContactService) { }
+
+  contacts!: Contact[]
+  contacts$!: Observable<Contact[]>
+  subscription!: Subscription
 
   ngOnInit(): void {
+    this.contactService.loadContacts({ term: '' })
+    this.contacts$ = this.contactService.contacts$
+  }
+
+  onRemoveContact(contactId: string) {
+    this.contactService.deleteContact(contactId)
   }
 
 }

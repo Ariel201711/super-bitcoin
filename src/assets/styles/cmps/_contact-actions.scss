@@ -1,10 +1,12 @@
 .contact-actions {
     gap: 20px;
+    padding: 20px;
+    align-items: center;
 
     button {
         border-radius: 80px;
         &.btn-remove {
-            background-color: red;
+            background-color: $clr8;
             color: $clr2;
         }
         &.btn-edit {
