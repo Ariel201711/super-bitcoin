@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { Subscription, lastValueFrom } from 'rxjs'
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -22,11 +22,22 @@ export class ContactDetailsComponent implements OnInit {
   paramsSubscription!: Subscription
 
   ngOnInit(): void {
-    this.paramsSubscription = this.route.data.subscribe(data => {
-      console.log('data:', data)
-      const contact = data['contact']
-      console.log('contact:', contact)
-      if (contact) this.contact = contact
+  //   this.paramsSubscription = this.route.data.subscribe(data => {
+  //     console.log('data:', data)
+  //     const contact = data['contact']
+  //     console.log('contact:', contact)
+  //     if (contact) this.contact = contact
+  //   })
+  // }
+    this.paramsSubscription = this.route.params.subscribe(async params => {
+      const id = params['id']
+      if (id) {
+        try {
+          this.contact = await lastValueFrom(this.contactService.getContactById(id))
+        } catch {
+          this.router.navigateByUrl('/contact')
+        }
+      }
     })
   }
 

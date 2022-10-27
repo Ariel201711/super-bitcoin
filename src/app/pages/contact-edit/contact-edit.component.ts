@@ -14,23 +14,38 @@ export class ContactEditComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
   contact!: Contact
   contactService = inject(ContactService)
-  pageTitle:string = ''
+  pageTitle: string = ''
 
   ngOnInit(): void {
-    this.route.data.subscribe(({ contact }) => {
-      if (contact) {
-        this.contact = contact
-        this.pageTitle = 'Edit Contact' 
+    // this.route.data.subscribe(({ contact }) => {
+    //   console.log('contact:', contact)
+    //   if (contact) {
+    //     this.contact = contact
+    //     this.pageTitle = 'Edit Contact' 
+    //   } else {
+    //     this.contact = this.contactService.getEmptyContact() as Contact
+    //     this.pageTitle = 'Add Contact' 
+    //   }
+    // })
+    this.route.params.subscribe(async params => {
+      const id = params['id']
+      if (id) {
+        try {
+          this.contact = await lastValueFrom(this.contactService.getContactById(id))
+        } catch {
+          this.router.navigateByUrl('/contact')
+        }
+        this.pageTitle = 'Edit Contact'
       } else {
         this.contact = this.contactService.getEmptyContact() as Contact
-        this.pageTitle = 'Add Contact' 
+        this.pageTitle = 'Add Contact'
       }
     })
   }
 
   async onSaveContact() {
-    await lastValueFrom(this.contactService.saveContact(this.contact))
+    await lastValueFrom(this.contactService.saveContact(this.contact)) // this contact cannot be null when saving it
     this.router.navigateByUrl('/contact')
-}
+  }
 
 }
