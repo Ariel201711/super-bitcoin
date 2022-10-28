@@ -1,52 +1,51 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
+import { Observable, throwError, map, of, lastValueFrom } from 'rxjs'
 import { catchError, retry } from 'rxjs/operators'
+import { storageService } from './storage.service'
+import { BitcoinRate } from '../models/bitcoin-rate.model'
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BitcoinService {
 
-constructor(private http: HttpClient) { }
-//   constructor() { }
+    constructor(private http: HttpClient) { }
+
+    async getRate(currency: string = 'USD'):Promise<BitcoinRate> {
+        const exchangeRates = await this.getExchangeRates()
+        return exchangeRates[currency]
+    }
+
+    async getExchangeRates<T>() {
+        let exchangeRates = storageService.loadFromStorage('EXCHANGE_RATES')
+        if (!exchangeRates) {
+            exchangeRates = await lastValueFrom(this.http.get('https://blockchain.info/ticker'))
+            storageService.saveToStorage('EXCHANGE_RATES', exchangeRates)
+        }
+        return exchangeRates
+    }
+
+    async getCurrencyOptions():Promise<string[]> {
+        const exchangeRates = await this.getExchangeRates()
+        const options = []
+        for (let currency in exchangeRates) {
+            options.push(currency)
+        }
+        return options
+    }
+
+
 }
 /*
     TODO: Implement this code in TS and use storage module:
     import { storageService } from './storage.service'
 
     export const bitcoinService = {
-        getRate,
         getMarketPriceHistory,
         getAvgBlockSize,
         getExchangeRates,
         getCurrencyOptions
-    }
-
-    async function getRate(currency = 'USD') {
-        const exchangeRates = await getExchangeRates()
-        // console.log(exchangeRates)
-        // console.log(exchangeRates[currency])
-        return exchangeRates[currency]
-    }
-
-    async function getExchangeRates() {
-        let exchangeRates = storageService.load('EXCHANGE_RATES')
-        if (!exchangeRates) {
-            exchangeRates = await axios.get('https://blockchain.info/ticker')
-            exchangeRates = exchangeRates.data
-            storageService.save('EXCHANGE_RATES', exchangeRates)
-        }
-        return exchangeRates
-    }
-
-    async function getCurrencyOptions() {
-        const exchangeRates = await getExchangeRates()
-        const options = []
-        for (let currency in exchangeRates) {
-            options.push(currency)
-        }
-        return options
     }
 
     async function getMarketPriceHistory() {
@@ -59,8 +58,9 @@ constructor(private http: HttpClient) { }
         return marketPriceHistory
     }
 
-    function getAvgBlockSize() {
-        return '50'
+   async getAvgBlockSize() {
+        const str = `https://api.blockchain.info/charts/avg-block-size?timespan=5months&format=json&cors=true`
+        const avgBlockSize = await axios.get(str)
     }
 
 */

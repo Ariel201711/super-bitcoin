@@ -4,16 +4,15 @@
         Trusted by millions since 2022 with over $1 Trillion in bitcoin transactions.
     </p>
     <!-- The following section can be used with ng if or observable: -->
-    <section class="bitcoin-rates-container flex">
-        <h4>
-            BTC/USD 192.3532
-        </h4>
-        <!-- The following select can be used with ng change: -->
-        <select>
-            <!-- Option Should be dynamic -->
-            <option value="">
-                USD
-            </option>
-        </select>
+    <section *ngIf="bitcoinRate" class="bitcoin-rates-container flex column">
+        <section class="bitcoin-rates flex">
+            <h2>Choose a currency rate:</h2>
+            <select [(ngModel)]="currency" (change)="getCurrExchangeRate()">
+                <option *ngFor="let currencyOption of currencyOptions" [value]="currencyOption">
+                    {{currencyOption}}
+                </option>
+            </select>
+        </section>
+        <h2>Bitcoin Rate: {{getCurrRate()}}</h2>
     </section>
 </header>

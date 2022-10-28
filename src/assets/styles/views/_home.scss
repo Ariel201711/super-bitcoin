@@ -4,14 +4,29 @@
 
 .bitcoin-rates-container {
 
-    select {
-        outline: 0;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+    align-items: center;
+    /* flex-direction: row-reverse; */
+    background-color: #009688;
+    padding: 20px;
+    max-width: 50%;
+    border-radius: 20px;
 
-        option {
+    .bitcoin-rates {
+        gap: 20px;
+        h2 {
+            align-self: center;
+        }
+        select {
+            outline: 0;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            padding: 10px;
         }
     }
+
+    // h4 {
+    //     align-self: center;
+    // }
+
 }
