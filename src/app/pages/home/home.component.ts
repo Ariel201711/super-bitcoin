@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BitcoinRate } from 'src/app/models/bitcoin-rate.model';
-import { BitcoinService } from 'src/app/services/bitcoin.service';
+import { Component, OnInit } from '@angular/core'
+import { BitcoinRate } from 'src/app/models/bitcoin-rate.model'
+import { BitcoinService } from 'src/app/services/bitcoin.service'
 
 
 @Component({
