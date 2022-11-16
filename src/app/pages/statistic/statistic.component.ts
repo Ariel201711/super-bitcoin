@@ -20,7 +20,10 @@ export class StatisticComponent implements OnInit {
     this.bitcoinPrices = values
     console.log('this.bitcoinPrices:', this.bitcoinPrices)
   }
-
+  getPriceData() {
+    return this.bitcoinPrices.map((value: any) => value.y) // change that any! define bitcoinPrices model
+  }
+  
   getPriceLabels() {
     return this.bitcoinPrices.map((value: any) => { // change that any! define bitcoinPrices model
       const newDate = new Date(value.x * 1000)
@@ -29,7 +32,5 @@ export class StatisticComponent implements OnInit {
     })
   }
 
-  priceData() {
-    return this.bitcoinPrices.map((value: any) => value.y) // change that any! define bitcoinPrices model
-  }
+
 }

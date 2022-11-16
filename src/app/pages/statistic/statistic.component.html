@@ -1,4 +1,4 @@
 <h1>Statistics</h1>
 <section class="charts-container">
-    <chart></chart>
+    <chart *ngIf="bitcoinPrices" [data]="getPriceData()" [labels]="getPriceLabels()"></chart>
 </section>

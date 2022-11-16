@@ -39,7 +39,6 @@ export class BitcoinService {
         let marketPriceHistory = storageService.loadFromStorage('MARKET_PRICE_DATA')
         if (!marketPriceHistory) {
             marketPriceHistory = lastValueFrom(this.http.get('https://api.blockchain.info/charts/market-price?cors=true'))
-            // marketPriceHistory = marketPriceHistory.data
             storageService.saveToStorage('MARKET_PRICE_DATA', marketPriceHistory)
         }
         return marketPriceHistory
