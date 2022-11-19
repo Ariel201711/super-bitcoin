@@ -1,14 +1,14 @@
 export class Contact {
 
     constructor(
-        public _id?: string,
         public name: string = '',
         public email: string = '',
-        public phone: string = '') {
+        public phone: string = '', 
+        public _id?: string) {
+           
     }
 
     setId?(id: string = 'r101') {
-        // Implement your own set Id
         this._id = id
     }
 }
@@ -16,14 +16,3 @@ export class Contact {
 export interface ContactFilter {
     term: string
 }
-
-// export interface Contact {
-//     _id?: string,
-//     name: string,
-//     email: string,
-//     phone: string  
-// }
-
-// export interface ContactFilter {
-//     term: string
-// }

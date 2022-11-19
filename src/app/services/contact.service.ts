@@ -29,7 +29,7 @@ const CONTACTS = [
         "phone": "+1 (911) 475-2312"
     },
     {
-        "_id": "5a566402abce24c6bfe4699d",
+        "_id": "da566402abce24c6bfe4699d",
         "name": "Dominique Soto",
         "email": "dominiquesoto@renovize.com",
         "phone": "+1 (807) 551-3258"
@@ -188,6 +188,7 @@ export class ContactService {
     private _addContact(contact: Contact) {
         //mock the server work
         const newContact = new Contact(contact.name, contact.email, contact.phone)
+        console.log('newContact:', newContact)
         if (typeof newContact.setId === 'function') newContact.setId(getRandomId())
         this._contactsDb.push(newContact)
         this._contacts$.next(this._sort(this._contactsDb))
