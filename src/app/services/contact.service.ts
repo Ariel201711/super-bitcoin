@@ -132,7 +132,7 @@ export class ContactService {
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
 
-    private _filterBy$ = new BehaviorSubject<ContactFilter>({ term: '' });
+    private _filterBy$ = new BehaviorSubject<ContactFilter>({ term: '' })
     public filterBy$ = this._filterBy$.asObservable()
 
     constructor() {
@@ -140,11 +140,17 @@ export class ContactService {
 
 
     public loadContacts(filterBy: { term: string }): void {
-        let contacts = this._contactsDb
+        let contacts = storageService.loadFromStorage('CONTACTS')
+        if(!contacts) contacts = this._contactsDb
         if (filterBy && filterBy.term) {
             contacts = this._filter(contacts, filterBy.term)
         }
+        storageService.saveToStorage('CONTACTS', contacts)
+        // console.log('contacts:', contacts)
+        // console.log('this._contacts$:', this._contacts$)
         this._contacts$.next(this._sort(contacts))
+        // console.log('contacts:', contacts)
+        // console.log('this._contacts$:', this._contacts$)
     }
 
 
@@ -161,11 +167,16 @@ export class ContactService {
     }
 
     public deleteContact(id: string) {
+        // console.log('this._contacts$',this._contacts$)
         //mock the server work
         this._contactsDb = this._contactsDb.filter(contact => contact._id !== id)
 
+        // console.log('this._contacts$',this._contacts$)
         // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._contactsDb)
+        // console.log('this.contactsDb:', this._contactsDb)
+        storageService.saveToStorage('CONTACTS', this._contactsDb)
+        // console.log('this.contactsDb:', this._contactsDb)
     }
 
     public saveContact(contact: Contact) {
@@ -188,7 +199,7 @@ export class ContactService {
     private _addContact(contact: Contact) {
         //mock the server work
         const newContact = new Contact(contact.name, contact.email, contact.phone)
-        console.log('newContact:', newContact)
+        // console.log('newContact:', newContact)
         if (typeof newContact.setId === 'function') newContact.setId(getRandomId())
         this._contactsDb.push(newContact)
         this._contacts$.next(this._sort(this._contactsDb))
