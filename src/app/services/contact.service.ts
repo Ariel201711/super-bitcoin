@@ -193,6 +193,7 @@ export class ContactService {
         this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
         // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._sort(this._contactsDb))
+        storageService.saveToStorage('CONTACTS', this._contactsDb)
         return of(contact)
     }
 
@@ -203,6 +204,7 @@ export class ContactService {
         if (typeof newContact.setId === 'function') newContact.setId(getRandomId())
         this._contactsDb.push(newContact)
         this._contacts$.next(this._sort(this._contactsDb))
+        storageService.saveToStorage('CONTACTS', this._contactsDb)
         return of(contact)
     }
 
