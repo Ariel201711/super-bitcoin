@@ -1,36 +1,22 @@
 .app-header {
-    padding-block: 20px;
+    padding-block: 40px;
     background-color: $clr1;
     color: $clr2;
     border-bottom: 1px solid $clr6;
 
-    .logo {
-        font-size: rem(20px);
-    }
-
     nav {
+        flex-grow: 1;
+        gap: rem(32px);
         a {
-            display: inline-flex;
-            
-            &:not(:first-of-type) {
-                padding-inline-start: rem(16px);
-            }
-
-            &:not(:last-of-type) {
-                padding-inline-end: rem(16px);
-            }
-
-            &[routerLinkActive]:hover {
-                background-color: transparent;
-            }
-            &[routerLinkActive].active:not(:first-of-type) {
-                color: $clr5;
+            &[routerLinkActive] {
+                &.active:not(.logo) {
+                    color: $clr5;
+                    // box-shadow: 0 60px 0 $clr5;
+                }
+                &:hover {
+                    background-color: transparent;
+                }
             }
         }
-
-    }
-
-    .loggedin-user {
-        padding-block: 40px;
     }
 }
