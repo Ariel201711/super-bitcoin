@@ -1,0 +1,30 @@
+.main-layout {
+    display: grid;
+    grid-template-columns: $layoutPadding 1fr $layoutPadding;
+    // overflow-x: hidden;
+    
+    >*:not(.full) {
+        grid-column: 2;
+    }
+
+    >*.full {
+        grid-column: -1/1;
+    }
+
+
+    @include for-layout-narrow {
+        @include layoutGTC($break-narrow);
+    }
+    
+    @include for-layout-normal {
+        @include layoutGTC($break-normal);
+    }
+    
+    @include for-layout-wide {
+        @include layoutGTC($break-wide);
+    }
+
+    @include for-layout-extra-wide {
+        @include layoutGTC($break-extra-wide);
+    }
+}

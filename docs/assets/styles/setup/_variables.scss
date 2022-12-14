@@ -1,0 +1,23 @@
+// Color Pallete
+$clr1: #121d33;
+$clr2: #fff;
+$clr3: #7349f2;
+$clr4: #0c6cf2;
+$clr5: #f28b24;
+$clr6: #677184;
+$clr7: #0bf60b;
+$clr8: #f00;
+
+// Padding
+$layoutPadding: 32px;
+
+// Breakpoints
+$break-narrow: 480px; // plan b: 460px
+$break-normal: 620px; // plan b: 720px
+$break-wide: 1020px; // plan b: 960px
+$break-extra-wide: 1200px; // plan b: 1520px 
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;
+$padded-break-extra-wide: $break-extra-wide + $layoutPadding * 2;

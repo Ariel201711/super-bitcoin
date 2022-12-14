@@ -1,0 +1,80 @@
+// Flex 
+
+.flex {
+    display: flex;
+
+    >*.full {
+        flex: 1;
+    }
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+// Grid 
+
+.grid {
+    display: grid;
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+}
+
+// Full Height
+
+.full-height {
+    height: 100%;
+}
+
+// List 
+
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+// Link
+.clean-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+}
+
+// Hide Elements
+
+.hide {
+    display: none;
+}
+
+// // Aspect Ratios
+
+// .ratio-16-9 { @include aspect-ratio(100, 56); }
+
+// .ratio-square { @include aspect-ratio(100, 100); }
+
+// .ratio-card { @include aspect-ratio(100, 80); }
+
+// .ratio-poster { @include aspect-ratio(100, 150); }

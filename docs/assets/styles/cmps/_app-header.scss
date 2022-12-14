@@ -1,0 +1,22 @@
+.app-header {
+    padding-block: 40px;
+    background-color: $clr1;
+    color: $clr2;
+    border-bottom: 1px solid $clr6;
+
+    nav {
+        flex-grow: 1;
+        gap: rem(32px);
+        a {
+            &[routerLinkActive="active"].active {
+                &:not(.logo) {
+                    color: $clr5;
+                    // box-shadow: 0 60px 0 $clr5;
+                }
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
